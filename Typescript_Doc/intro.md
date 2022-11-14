@@ -2,6 +2,8 @@
 
 Typescript extends JavaScript and improve the developer experience. It enables developer to add `type safty` to their project.
 
+TypeScript is a `typed` language. However, it is not mandatory to specify the `type` of a variable. TypeScript infers types of variables when there is no `explicit information` available in the form of `type annotations`.
+
 # Types
 
 -----> There are different types are available
@@ -31,4 +33,4 @@ let variableName : `type` = `value`
 
 -> Typescript always point out the `compilation errors` at the time of development. Because of this the count of runtime errors get reduce.
 -> Typescript check type correctness at compile time. This feature is not in Javascript.
--> Typescript is `Version Independent` which means typescript compiler can compile `.ts` files into ES3,ES4,ES5 also. 
+-> Typescript is `Version Independent` which means typescript compiler can compile `.ts` files into ES3,ES4,ES5 also.
