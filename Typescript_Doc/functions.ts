@@ -1,3 +1,105 @@
+/* Funstion :
+- Functions are primary block of any program.
+- With functions you can immplement/mimic the concept of object-oriented-programming like classes,objects,polymorphism and abstraction.
+ */
+
+/* Named functions:
+- A named function is one where you declare and call a function by its given name
+*/
+function display() {
+  console.log("Hello TypeScript!");
+}
+
+display(); //Output: Hello TypeScript
+
+// Functions can also include parameter types and return type.
+function Sum(x: number, y: number): number {
+  return x + y;
+}
+
+Sum(2, 3); // returns 5
+
+/* Anonymous functions:
+- An anonymous function is one which is defined as an expression.This expression is stored in a variable.
+- So the function does not have a name
+*/
+let greeting = function () {
+  console.log("Hello TypeScript!");
+};
+
+greeting(); //Output: Hello TypeScript!
+
+// An anonymous function can also include parameter types and return type.
+let doSum = function (x: number, y: number): number {
+  return x + y;
+};
+
+doSum(2, 3); // returns 5
+
+/* Function Parameters
+- Parameters are values or arguments passed to a function.
+*/
+function Greet(greeting: string, name: string): string {
+  return greeting + " " + name + "!";
+}
+
+Greet("Hello", "Steve"); //OK, returns "Hello Steve!"
+/* Compiler Error: Expected 2 arguments, but got 1.
+        Greet('Hi');
+   Compiler Error: Expected 2 arguments, but got 3.
+        Greet('Hi','Bill','Gates'); 
+*/
+
+/* Optional Parameters
+- The parameters that may or may not receive a value can be appended with a '?' to mark them as optional.
+Note : All optional parameters must follow required parameters and should be at the end.
+*/
+function Greeting(greeting: string, name?: string): string {
+  return greeting + " " + name + "!";
+}
+
+Greeting("Hello", "Steve"); //OK, returns "Hello Steve!"
+Greeting("Hi"); // OK, returns "Hi undefined!".
+/*Compiler Error: Expected 2 arguments, but got 3.
+       Greeting('Hi','Bill','Gates'); 
+*/
+
+/* Default Parameters
+- TypeScript provides the option to add default values to parameters. 
+- So, if the user does not provide a value to an argument, TypeScript will initialize the parameter with the default value.
+*/
+function Greetings(name: string, greeting: string = "Hello"): string {
+  return greeting + " " + name + "!";
+}
+
+Greetings("Steve"); //OK, returns "Hello Steve!"
+Greetings("Steve", "Hi"); // OK, returns "Hi Steve!".
+Greetings("Bill"); //OK, returns "Hello Bill!"
+
+//Note : When the default parameters precede required parameters in a function, they can be called by passing undefined.
+function Greet1(greeting: string = "Hello", name: string): string {
+  return greeting + " " + name + "!";
+}
+
+Greet1(undefined, "Steve"); //returns "Hello Steve!"
+Greet1("Hi", "Steve"); //returns "Hi Steve!".
+Greet1(undefined, "Bill"); //returns "Hello Bill!"
+
+/* Arrow functions
+- Fat arrow notations are used for anonymous functions i.e for function expressions. 
+- They are also called lambda functions in other languages.
+*/
+let sum = (x: number, y: number): number => {
+  return x + y;
+};
+
+sum(10, 20); //returns 30
+
+// If the function body consists of only one statement then no need for the curly brackets and the return keyword, as shown below.
+let add = (x: number, y: number) => x + y;
+
+add(3, 4); //returns 7
+
 // Function that take string as an argument and return string
 function sayHello(name: string): string {
   return `Hello ${name}`;
