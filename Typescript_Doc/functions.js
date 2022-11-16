@@ -29,7 +29,7 @@ var doSum = function (x, y) {
     return x + y;
 };
 doSum(2, 3); // returns 5
-/* Function Parameters
+/* Function Parameters:
 - Parameters are values or arguments passed to a function.
 */
 function Greet(greeting, name) {
@@ -41,7 +41,7 @@ Greet("Hello", "Steve"); //OK, returns "Hello Steve!"
    Compiler Error: Expected 2 arguments, but got 3.
         Greet('Hi','Bill','Gates');
 */
-/* Optional Parameters
+/* Optional Parameters:
 - The parameters that may or may not receive a value can be appended with a '?' to mark them as optional.
 Note : All optional parameters must follow required parameters and should be at the end.
 */
@@ -53,7 +53,7 @@ Greeting("Hi"); // OK, returns "Hi undefined!".
 /*Compiler Error: Expected 2 arguments, but got 3.
        Greeting('Hi','Bill','Gates');
 */
-/* Default Parameters
+/* Default Parameters:
 - TypeScript provides the option to add default values to parameters.
 - So, if the user does not provide a value to an argument, TypeScript will initialize the parameter with the default value.
 */
@@ -72,7 +72,7 @@ function Greet1(greeting, name) {
 Greet1(undefined, "Steve"); //returns "Hello Steve!"
 Greet1("Hi", "Steve"); //returns "Hi Steve!".
 Greet1(undefined, "Bill"); //returns "Hello Bill!"
-/* Arrow functions
+/* Arrow functions :
 - Fat arrow notations are used for anonymous functions i.e for function expressions.
 - They are also called lambda functions in other languages.
 */
@@ -83,6 +83,41 @@ sum(10, 20); //returns 30
 // If the function body consists of only one statement then no need for the curly brackets and the return keyword, as shown below.
 var add = function (x, y) { return x + y; };
 add(3, 4); //returns 7
+function add1(a, b) {
+    // Function implementation
+    return a + b;
+}
+add1("Hello ", "Steve"); // returns "Hello Steve"
+add1(10, 20); // returns 30
+// Function overloading with different number of parameters and types with same name is not supported.
+/*
+function display(a:string, b:string):void //Compiler Error: Duplicate function implementation
+{
+    console.log(a + b);
+}
+
+function display(a:number): void //Compiler Error: Duplicate function implementation
+{
+    console.log(a);
+}
+ */
+/* Rest Parameters :
+- When the number of parameters that a function will receive is not known or can vary, we can use rest parameters.
+- In JavaScript, this is achieved with the "arguments" variable.
+- However, with TypeScript, we can use the rest parameter denoted by ellipsis ... .
+- We can pass zero or more arguments to the rest parameter.
+- The compiler will create an array of arguments with the rest parameter name provided by us.
+- Rest parameters must come last in the function definition, otherwise the TypeScript compiler will show an error.
+*/
+function restParam(greeting) {
+    var names = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        names[_i - 1] = arguments[_i];
+    }
+    return greeting + " " + names.join(", ") + "!";
+}
+restParam("Hello", "Steve", "Bill"); // returns "Hello Steve, Bill!"
+restParam("Hello"); // returns "Hello !"
 // Function that take string as an argument and return string
 function sayHello(name) {
     return "Hello ".concat(name);

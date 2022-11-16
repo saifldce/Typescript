@@ -42,3 +42,5 @@ employee1.code = 123; // OK
 // While dealing with JSX in typescript only `as` syntax is allowed, b'coz JSX is embeddable in XML like a syntax.
 let code1: any = 123; 
 let employeeCode1 = code1 as number;
+
+export {}

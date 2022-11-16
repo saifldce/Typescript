@@ -1,3 +1,4 @@
+"use strict";
 /* Assertion:
 - It's an internal logic mechanism that typescript used to infer and check the type of a variable.
 - Type assertion allows you to set the type of a value and tell the compiler not to infer it.
@@ -5,6 +6,7 @@
 - However, unlike C# and Java, there is no runtime effect of type assertion in TypeScript.
 - It is merely a way to let the TypeScript compiler know the type of a variable.
 */
+exports.__esModule = true;
 // Example:
 var code = 123;
 var employeeCode = code;
