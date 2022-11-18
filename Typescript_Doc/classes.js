@@ -81,3 +81,113 @@ var Customer = /** @class */ (function (_super) {
 }(Person));
 var customer = new Customer(100, "Bill");
 customer.displayName(); // Name = Bill, Customer Code = 100
+var CustomerDetails = /** @class */ (function () {
+    function CustomerDetails(name, id) {
+        this.name = name;
+        this.customerID = id;
+    }
+    CustomerDetails.prototype.display = function () {
+        console.log("Name = " + this.name + ", Custome Id = " + this.customerID);
+    };
+    return CustomerDetails;
+}());
+var per = new CustomerDetails("Johny Dep", 123);
+per.display(); // Name = Johny Dep, Customer Id = 123
+var cust = new CustomerDetails("Johny Dep", 123);
+//Compiler Error: Property 'display' does not exist on type 'IEmployee'
+// cust.display()
+// Interface extends classs
+/*
+- Here, `IClass` is an interface that extends `Teacher` class.
+- So we can declare a variable of type `IClass` with two properties.
+- So now, we must declare and initialize value at the same time.
+ */
+var Teacher = /** @class */ (function () {
+    function Teacher() {
+    }
+    return Teacher;
+}());
+var std = { teacherID: 123, name: "Johson" };
+/* Method Overriding
+- Method overriding occurs when a subclass (child class) has the same method as the parent class.
+- When a child class defines its own implementation of a method from the parent class, it is called method overriding.
+*/
+var Boy = /** @class */ (function () {
+    function Boy() {
+    }
+    Boy.prototype.about = function () {
+        console.log(this.name + " is an intelligent boy..");
+    };
+    return Boy;
+}());
+var Student = /** @class */ (function (_super) {
+    __extends(Student, _super);
+    function Student(rollNumber, marks, name1) {
+        var _this = _super.call(this) || this;
+        _this.rollNumber = rollNumber;
+        _this.marks = marks;
+        _this.name = name1;
+        return _this;
+    }
+    Student.prototype.displayInfo = function () {
+        console.log("Name : " +
+            this.name +
+            ", Roll Number : " +
+            this.rollNumber +
+            ", Scores : " +
+            this.marks +
+            " out of 100");
+    };
+    Student.prototype.about = function () {
+        console.log(this.name + "scores well..");
+    };
+    return Student;
+}(Boy));
+var student = new Student(26, 89, "San");
+student.displayInfo(); // Output : San, Roll Number : 26, Scores : 89 out of 100
+student.about(); //Output :  San scores well..
+/* To call Super Class method from Sub Class :
+- Immediate super class methods could be called from sub class using `super` keyword.
+- We can display the result of the Parent class method also inside the child’s class overridden parent class method with the help of `super` keyword.
+- Replace below method with that of `Student` class method and run the program.
+- The `about()` method in `Boy` class is executed for super.about().
+---------------------------------------------------------------------------------
+about(): void {
+  super.about()
+  console.log(this.name + "scores well..");
+}
+*/
+var callSuper = new Student(26, 89, "San");
+callSuper.displayInfo(); // Output : San, Roll Number : 26, Scores : 89 out of 100
+// San is an intelligent boy..
+callSuper.about(); //Output :  San scores well..
+/* Abstract class :
+- An `abstract` class typically includes one or more abstract methods or property declarations.
+- The class which extends the abstract class must define all the abstract methods.
+- Abstract classes are mainly for inheritance where other classes may derive from them. We cannot create an instance of an abstract class.
+- Abstract class are created by using `abstract` keyword.
+*/
+// Example : The following abstract class declares one abstract method `find` and also include normal method `display`
+var AbsPerson = /** @class */ (function () {
+    function AbsPerson(name) {
+        this.name = name;
+    }
+    AbsPerson.prototype.display = function () {
+        console.log(this.name);
+    };
+    return AbsPerson;
+}());
+var AbsEmployee = /** @class */ (function (_super) {
+    __extends(AbsEmployee, _super);
+    function AbsEmployee(name, code) {
+        var _this = _super.call(this, name) || this;
+        _this.empCode = code;
+        return _this;
+    }
+    AbsEmployee.prototype.find = function (name) {
+        return new AbsEmployee(name, 1);
+    };
+    return AbsEmployee;
+}(AbsPerson));
+var emp = new AbsEmployee("Joy", 101);
+emp.display(); // Joy
