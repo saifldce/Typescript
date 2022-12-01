@@ -143,4 +143,7 @@ class EmployeeDetails implements IEmployee {
 }
 
 let emp = new EmployeeDetails("Sam", 123);
+
+
+
 export {};
