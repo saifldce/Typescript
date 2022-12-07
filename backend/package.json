@@ -1,7 +1,7 @@
 {
-  "name": "minddeft-test-backend",
+  "name": "friend-request-backend",
   "version": "1.0.0",
-  "description": "MindDeft-Test Backend",
+  "description": "Friend-Request Backend",
   "main": "app",
   "scripts": {
     "start": "nodemon app.js"
