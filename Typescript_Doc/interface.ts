@@ -1,6 +1,7 @@
 /* Interface :
 - Interface in typescript is types for the `Objecct`.
-- In typescript interface id defined with the help of the `interface` keyword.
+- Interface is usefull for validating the structure of an object in the case where we are creating an object,passing object as parameter.
+- In typescript interface is defined with the help of the `interface` keyword.
 - Javascript uses an interface for the type checking.
 - The interface is also known as `duck typing` or `structural subtyping`.
 - An interface can include properties and method declarations using function or an arrow function.

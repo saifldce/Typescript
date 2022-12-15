@@ -74,6 +74,7 @@ const mutualFriend = async (req, res) => {
     });
   }
 };
+
 module.exports = {
   list,
   mutualFriend,

@@ -6,7 +6,7 @@ const authRoutes = require("../controllers/auth/routes");
 const userRoutes = require("../controllers/user/routes");
 const requestRoutes = require("../controllers/request/routes");
 
-// user api routes
+//User api routes
 
 router.use("/auth", authRoutes);
 router.use("/user",isAuthenticated(), userRoutes);

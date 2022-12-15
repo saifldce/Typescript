@@ -86,7 +86,7 @@ const request = async (req, res) => {
   }
 };
 
-// user request list
+//User request list
 
 const list = async (req, res) => {
   const userId = req.user.id;

@@ -20,8 +20,6 @@ const schema = new mongoose.Schema(
 // add plugin that converts mongoose to json
 schema.plugin(toJSON);
 
-
-
 // Check if email is exists
 schema.statics.isEmailExists = async function (email, excludeUserId) {
   const user = await this.findOne({ email, _id: { $ne: excludeUserId } });

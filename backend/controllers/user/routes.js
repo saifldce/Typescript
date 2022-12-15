@@ -6,4 +6,5 @@ router.route("/mutual/:id").get(controller.mutualFriend);
 
 router.route("").get(controller.list);
 
+
 module.exports = router;

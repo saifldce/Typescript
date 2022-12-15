@@ -6,7 +6,7 @@
 - To enable experimental support for decorators, you must enable the `experimentalDecorators` compiler option either on the command line or in tsconfig.json.
 - Following steps are performed when evaluating multiple decorators on a single declaration in Typescript:
 1. Decorator expression are evaluated in Top-to-Bottom.
-2. Result return by the are in Bottom-to-Top.
+2. Result return by the decorator are in Bottom-to-Top.
  */
 
 // Example :
