@@ -12,6 +12,7 @@ const { USER_FIELDS } = require("../../config/constant");
 
 const signup = async (req, res) => {
   const data = req.body;
+  // console.log("data",data)
   // to verify user email
   if (await Model.isEmailExists(data.email)) {
     return res
@@ -48,9 +49,9 @@ const login = async (req, res) => {
   const token = await generateAuthTokens(user.id);
   const data = {};
   USER_FIELDS.map((obj) => (data[obj] = user[obj]));
-
   return res.status(httpStatus.OK).send({
-    data: { user: data, token },
+    user: data,
+    token,
     message: MESSAGE.login_success,
     success: true,
   });
