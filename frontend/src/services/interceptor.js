@@ -2,12 +2,12 @@ import { TOKEN_KEY } from "../configs/constant";
 import API from ".";
 
 const interceptor = {
-  setupInterceptors: (store:any) => {
+  setupInterceptors: () => {
     API.interceptors.request.use(
-      (request: any) => {
+      (request) => {
         request.headers.common["Accept"] = `application/json`;
         request.headers.common["Access-Control-Allow-Origin"] = "*";
-        // console.log('API.interceptors',localStorage.getItem(TOKEN_KEY));
+        console.log('API.interceptors',localStorage.getItem(TOKEN_KEY));
         // const token = localStorage.getItem(TOKEN_KEY)
 
         // console.log("Type of",typeof(TOKEN_KEY))
@@ -38,7 +38,7 @@ const interceptor = {
         if (error && error.response) {
           switch (error.response.status) {
             case 401:
-              store.dispatch({ type: "PURGE_AUTH" });
+              // store.dispatch({ type: "PURGE_AUTH" });
               localStorage.removeItem(TOKEN_KEY);
               break;
             default:

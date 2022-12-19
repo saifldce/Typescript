@@ -10,9 +10,9 @@ const MESSAGE = require("../../config/message");
  */
 const request = async (req, res) => {
   const { id } = req.params;
-  // const { slug } = req.query;
-  const {slug} = req.body;
+  const { slug } = req.body;
   const userId = req.user.id;
+
   try {
     const userInstance = await User.findById(id);
     if (!userInstance) {
@@ -26,7 +26,8 @@ const request = async (req, res) => {
     const currentUserRequest = await Model.findOne({ user: userId });
     // request send to
     const userRequest = await Model.findOne({ user: id });
-    if (slug === "R") {  // to sent user request
+    if (slug === "R") {
+      // to sent user request
       if (!currentUserRequest) {
         let data = { user: userId, sentRequest: [id] };
         await Model.create(data);
@@ -53,14 +54,17 @@ const request = async (req, res) => {
         currentUserRequest.sentRequest.push(id);
         userRequest.recieveRequest.push(userId);
       }
-    } else if (slug === "D") { // to decline user request
+    } else if (slug === "D") {
+      // to decline user request
       const currentUserIndex = currentUserRequest.recieveRequest.indexOf(id);
       const userIndex = userRequest.sentRequest.indexOf(userId);
-      if (currentUserIndex > -1 && userIndex > -1) {
+      // console.log("currentUserIndex>>>>userIndex",currentUserIndex,userIndex)
+      if (currentUserIndex > -1 || userIndex > -1) {
         currentUserRequest.recieveRequest.splice(currentUserIndex, 1);
         userRequest.sentRequest.splice(userIndex, 1);
       }
-    } else {  // to accept user request
+    } else {
+      // to accept user request
       currentUserRequest.friends.push(id);
       userRequest.friends.push(userId);
       const currentUserIndex = currentUserRequest.recieveRequest.indexOf(id);
@@ -95,6 +99,7 @@ const list = async (req, res) => {
   try {
     let data = {};
     if (slug === "recieve-request") {
+      // console.log("inside recieve request")
       // user recieveRequest list
       data = await Model.findOne({ user: userId })
         .populate([
@@ -104,7 +109,7 @@ const list = async (req, res) => {
           },
         ])
         .select("recieveRequest user");
-        // data = {data: data.recieveRequest,user:data.user,_id:data.id}
+      // data = {data: data.recieveRequest,user:data.user,_id:data.id}
     } else if (slug === "sent-request") {
       // user sentRequest list
       data = await Model.findOne({ user: userId })
@@ -113,6 +118,7 @@ const list = async (req, res) => {
         ])
         .select("sentRequest user");
     } else {
+      // console.log("inside friends")
       // user friends list
       data = await Model.findOne({ user: userId })
         .populate([
@@ -144,33 +150,37 @@ const suggestionList = async (req, res) => {
   const data = await User.find({ _id: { $ne: userId } }).select(
     "id firstName lastName userName email suggestionDate"
   );
+  // console.log("data", data);
   // retrieve current user instance from Request collection
   const userInstance = await Model.findOne({ user: userId });
+  // console.log("userInstance",userInstance)
   const sentRequest = userInstance?.sentRequest || [];
   const recieveRequest = userInstance?.recieveRequest || [];
   const friends = userInstance?.friends || [];
   const allRequest = [...sentRequest, ...recieveRequest, ...friends].toString();
+  // console.log("allRequest", allRequest);
   const sugesstionInstance = await Promise.all(
     data.filter((e) => {
-       // show user suggestion only once in a day
+      // show user suggestion only once in a day
       if (e.suggestionDate !== currentDate || !e.suggestionDate) {
         let id = e.id.toString();
-        if(!allRequest.includes(id)){
-          e.suggestionDate = currentDate;
-          e.save()
+        if (!allRequest.includes(id)) {
+          // console.log("allRequest.includes(id)", !allRequest.includes(id));
+          // e.suggestionDate = currentDate;
+          // e.save();
         }
+        // console.log("allRequest.indexOf(id)", allRequest.indexOf(id));
         return allRequest.indexOf(id) == -1;
       }
     })
   );
+  // console.log("sugesstionInstance", sugesstionInstance);
   sugesstionInstance.splice(2);
-  return res
-    .status(httpStatus.OK)
-    .send({
-      data: sugesstionInstance,
-      success: true,
-      message: MESSAGE.retrieve_success,
-    });
+  return res.status(httpStatus.OK).send({
+    data: sugesstionInstance,
+    success: true,
+    message: MESSAGE.retrieve_success,
+  });
 };
 
 module.exports = {

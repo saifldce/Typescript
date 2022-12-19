@@ -10,7 +10,7 @@ const isAuthenticated = () => {
   return async (req, res, next) => {
     try {
       let token = req.headers.authorization || req.query.authorization;
-      // console.log("token", token);
+      // console.log("token", req.headers);
       if (!token) {
         return res
           .status(httpStatus.UNAUTHORIZED)

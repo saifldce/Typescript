@@ -10,6 +10,7 @@ const list = async (req, res) => {
     const userInstance = await Model.find({ _id: { $ne: userId } }).select(
       "id firstName lastName userName email"
     );
+    // console.log("userInstance",userInstance)
     const requestInstance = await Request.findOne({ user: userId });
     const sentRequest = requestInstance?.sentRequest || [];
     const recieveRequest = requestInstance?.recieveRequest || [];

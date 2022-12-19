@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./store";
@@ -13,14 +13,16 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ToastContainer />
-      {/* <BrowserRouter> */}
-      <App />
-      {/* </BrowserRouter> */}
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>  // Some times it calls some events twice
+
+  <Provider store={store}>
+    <ToastContainer />
+    {/* <BrowserRouter> */}
+    <App />
+    {/* </BrowserRouter> */}
+  </Provider>
+
+  // </React.StrictMode>
 );
 
 // ReactDOM.render(
