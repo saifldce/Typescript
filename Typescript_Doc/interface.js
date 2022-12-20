@@ -1,6 +1,6 @@
 "use strict";
 /* Interface :
-- Interface in typescript is types for the `Objecct`.
+- Interface in typescript is types for the `Object`.
 - Interface is usefull for validating the structure of an object in the case where we are creating an object,passing object as parameter.
 - In typescript interface id defined with the help of the `interface` keyword.
 - Javascript uses an interface for the type checking.
