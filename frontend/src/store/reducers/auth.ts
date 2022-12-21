@@ -13,7 +13,7 @@ export const user = (state: InitState = initialState, action: Action) => {
       return { ...state, currentUser: action.payload, isAuthenticated: true };
     }
     case ActionType.PURGE_AUTH: {
-      //   console.log("Token key",localStorage.getItem(TOKEN_KEY));
+        // console.log("Token key",localStorage.getItem(TOKEN_KEY));
       localStorage.removeItem(TOKEN_KEY);
 
       // history.push("/login");

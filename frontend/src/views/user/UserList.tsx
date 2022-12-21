@@ -25,7 +25,8 @@ const UserList = () => {
     setShowLoader(true);
     try {
       const { data }: any = await UserService.getList();
-      setDataList(data.data || []);
+
+      setDataList(data || []);
     } catch (error: any) {
       setDataList([]);
       toast.error(error.message);

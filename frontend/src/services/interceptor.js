@@ -5,14 +5,15 @@ const interceptor = {
   setupInterceptors: () => {
     API.interceptors.request.use(
       (request) => {
-        request.headers.common["Accept"] = `application/json`;
-        request.headers.common["Access-Control-Allow-Origin"] = "*";
-        console.log('API.interceptors',localStorage.getItem(TOKEN_KEY));
+        request.headers["Accept"] = `application/json`;
+        request.headers["Access-Control-Allow-Origin"] = "*";
+
+        // console.log("API.interceptors", localStorage.getItem(TOKEN_KEY));
         // const token = localStorage.getItem(TOKEN_KEY)
 
         // console.log("Type of",typeof(TOKEN_KEY))
         if (localStorage.getItem(TOKEN_KEY)) {
-          request.headers.common.Authorization = `Bearer ${localStorage.getItem(
+          request.headers.Authorization = `Bearer ${localStorage.getItem(
             TOKEN_KEY
           )}`;
         }
@@ -26,7 +27,7 @@ const interceptor = {
 
     API.interceptors.response.use(
       (response) => {
-        console.log('interceptors ==>>>',response);
+        // console.log('interceptors ==>>>',response);
         if (response.status === 200 || response.status === 201) {
           return Promise.resolve(response.data);
         } else {
@@ -34,7 +35,7 @@ const interceptor = {
         }
       },
       (error) => {
-        console.log("Interceptor error>>>>>>>",error.response.status);
+        // console.log("Interceptor error>>>>>>>",error.response.status);
         if (error && error.response) {
           switch (error.response.status) {
             case 401:

@@ -65,7 +65,7 @@ const SuggestionList = () => {
   };
   let listItems;
   if (dataList.length > 0) {
-    listItems = dataList.map((element, index) => {
+    listItems = dataList.map((element) => {
       return (
         <tr key={element.id}>
           <td>{element.firstName}</td>

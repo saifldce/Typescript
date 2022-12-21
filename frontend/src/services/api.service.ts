@@ -23,10 +23,10 @@ const AuthService = {
 // User services
 const UserService = {
   async getList() {
-    // return await API.get(`/user`);
-    return await axios.get(`${API_URL}/user`, {
-      headers: authHeader,
-    });
+    return await API.get(`/user`);
+    // return await axios.get(`${API_URL}/user`, {
+    //   headers: authHeader,
+    // });
   },
   async getByID(id: string | undefined) {
     // return await API.get(`/user/mutual/${id}`);
