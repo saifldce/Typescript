@@ -63,7 +63,14 @@ type Vegitable = "carrot" | "broccoli" | "lettuce";
 
 type HealthyFoods = Fruits | Vegitable;
 
+/*Intersection :An intersection type is a type that combines several types into one.
+Union: A value that can be any one of several types is a union type.
+- The & symbol is used to create an intersection, whereas the | symbol is used to represent a union. 
+- An intersection can be read as an And operator and a union as an Or.
+*/
+
 /* Conclusion : In typscript `interface` and `type` alias is same but the difference is :
  - We are not able to create `union`,`intersection` or tuple with an `interface` so use a `type` in when creating them.
 */
 
+export {};
