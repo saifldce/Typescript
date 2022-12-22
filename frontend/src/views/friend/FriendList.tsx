@@ -82,6 +82,7 @@ const FriendList = () => {
       await RequestService.edit(id, reqSlug);
       if (reqSlug === "A") {
         toast.success("Request accepted");
+        return;
       }
       toast.error("Request decline");
 

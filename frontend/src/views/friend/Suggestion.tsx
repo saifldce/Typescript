@@ -22,14 +22,13 @@ const SuggestionList = () => {
   const [dataList, setDataList] = useState<IUser[]>([]);
 
   useEffect(() => {
-    getSuggestionList(); 
+    getSuggestionList();
 
     // to refresh suggestion list evry one minute
-
-    // setInterval(() => {
-    //   getSuggestionList();
-    //   // console.log('Someone Scheduled me to run every minute');
-    // }, 60000);
+    setInterval(() => {
+      getSuggestionList();
+      // console.log('Someone Scheduled me to run every minute');
+    }, 60000);
   }, []);
 
   const getSuggestionList = async () => {
