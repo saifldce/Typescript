@@ -34,14 +34,14 @@ const Login = () => {
 
   const login = async (values: ILogin) => {
     // setErrorText(null);
+
     setShowLoader(true);
     setValues(values);
     // alert(values.email);
     try {
-      const { data }: any = await AuthService.login(values);
-      // console.log("data>>>>>>", data);
-      const { user, token } = data;
-      // const { token }: any = data.token;
+      const { user, token }: any = await AuthService.login(values);
+      // console.log("data>>>>>>", user,token.token);
+
       // store token to localStorage
       localStorage.setItem(TOKEN_KEY, token.token);
       // console.log("token:", token);

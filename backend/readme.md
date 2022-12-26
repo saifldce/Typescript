@@ -15,16 +15,16 @@ Install the dependencies:
 npm install
 ```
 
+### Create .env File
+
 Set the environment variables:
 
-```bash
-# You will find a example.env file in the home directory. Paste the contents of that into a file named .env in the same directory. Fill in the variables to fit your application
-# open .env and modify the environment variables (if needed)
-```
+You will find a example.env file in the home directory. Paste the contents of that into a file named .env in the same directory. Fill in the variables to fit your application
 
 ### Commands
 
 Run:
+
 ```bash
 npm start
 ```
@@ -42,9 +42,3 @@ src\
  |--app.js          # Express app & App entry point
 ```
 
-### Create .env File
-
-You will find a example.env file in the home directory. Paste the contents of that into a file named .env in the same directory. Fill in the variables to fit your application
-
-
-### Import db collection attached with project folder

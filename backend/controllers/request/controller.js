@@ -165,7 +165,7 @@ const suggestionList = async (req, res) => {
       if (e.suggestionDate !== currentDate || !e.suggestionDate) {
         let id = e.id.toString();
         if (!allRequest.includes(id)) {
-          console.log("allRequest.includes(id)", !allRequest.includes(id));
+          // console.log("allRequest.includes(id)", !allRequest.includes(id));
           e.suggestionDate = currentDate;
           e.save();
         }

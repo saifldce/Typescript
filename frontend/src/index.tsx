@@ -17,26 +17,11 @@ root.render(
 
   <Provider store={store}>
     <ToastContainer />
-    {/* <BrowserRouter> */}
     <App />
-    {/* </BrowserRouter> */}
   </Provider>
 
   // </React.StrictMode>
 );
-
-// ReactDOM.render(
-//   <Provider store="">
-//     <ToastContainer/>
-//     {/* <Suspense fallback={<Loader />}>
-//         <LazyApp />
-//     </Suspense> */}
-//     <BrowserRouter>
-//     <App />
-//     </BrowserRouter>
-//   </Provider>,
-//   document.getElementById("root")
-// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

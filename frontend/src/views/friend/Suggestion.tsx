@@ -35,7 +35,7 @@ const SuggestionList = () => {
     setShowLoader(true);
     try {
       const { data } = await RequestService.getSuggestionList();
-      setDataList(data.data || []);
+      setDataList(data || []);
       // console.log(sentRequest)
       // console.log("requestList",requestList)
     } catch (error: any) {

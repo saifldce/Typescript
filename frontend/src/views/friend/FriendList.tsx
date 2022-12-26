@@ -36,9 +36,9 @@ const FriendList = () => {
       const { data } = await RequestService.getList(slug);
 
       setDataList(
-        data.data?.friends ||
-          data.data?.recieveRequest ||
-          data.data?.sentRequest ||
+        data?.friends ||
+          data?.recieveRequest ||
+          data?.sentRequest ||
           []
       );
       // sample data to test

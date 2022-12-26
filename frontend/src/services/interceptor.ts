@@ -4,13 +4,9 @@ import API from ".";
 const interceptor = {
   setupInterceptors: () => {
     API.interceptors.request.use(
-      (request) => {
+      (request: any) => {
         request.headers["Accept"] = `application/json`;
         request.headers["Access-Control-Allow-Origin"] = "*";
-
-        // console.log("API.interceptors", localStorage.getItem(TOKEN_KEY));
-        // const token = localStorage.getItem(TOKEN_KEY)
-
         // console.log("Type of",typeof(TOKEN_KEY))
         if (localStorage.getItem(TOKEN_KEY)) {
           request.headers.Authorization = `Bearer ${localStorage.getItem(
