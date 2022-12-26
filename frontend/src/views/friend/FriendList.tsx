@@ -34,9 +34,12 @@ const FriendList = () => {
     setShowLoader(true);
     try {
       const { data } = await RequestService.getList(slug);
-      
+
       setDataList(
-        data.data?.friends || data.data?.recieveRequest || data.data?.sentRequest || []
+        data?.friends ||
+          data?.recieveRequest ||
+          data?.sentRequest ||
+          []
       );
       // sample data to test
 
@@ -74,14 +77,12 @@ const FriendList = () => {
   const onChangeRequest = async (id: any, reqSlug: string) => {
     setShowLoader(true);
     try {
-      console.log("Before",dataList)
       dataList.splice(id, 1);
-      console.log("After",dataList)
-
       setDataList(dataList);
       await RequestService.edit(id, reqSlug);
       if (reqSlug === "A") {
         toast.success("Request accepted");
+        return;
       }
       toast.error("Request decline");
 

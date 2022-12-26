@@ -22,21 +22,20 @@ const SuggestionList = () => {
   const [dataList, setDataList] = useState<IUser[]>([]);
 
   useEffect(() => {
-    getSuggestionList(); 
+    getSuggestionList();
 
     // to refresh suggestion list evry one minute
-
-    // setInterval(() => {
-    //   getSuggestionList();
-    //   // console.log('Someone Scheduled me to run every minute');
-    // }, 60000);
+    setInterval(() => {
+      getSuggestionList();
+      // console.log('Someone Scheduled me to run every minute');
+    }, 60000);
   }, []);
 
   const getSuggestionList = async () => {
     setShowLoader(true);
     try {
       const { data } = await RequestService.getSuggestionList();
-      setDataList(data.data || []);
+      setDataList(data || []);
       // console.log(sentRequest)
       // console.log("requestList",requestList)
     } catch (error: any) {
@@ -65,7 +64,7 @@ const SuggestionList = () => {
   };
   let listItems;
   if (dataList.length > 0) {
-    listItems = dataList.map((element, index) => {
+    listItems = dataList.map((element) => {
       return (
         <tr key={element.id}>
           <td>{element.firstName}</td>
