@@ -161,7 +161,7 @@ function sayHello(name: string): string {
   // return 123  Return type can't be a number
 }
 
-sayHello("Saif");
+sayHello("Saifuddin");
 // sayHello(123); It will throw an error
 
 // Function that take only number as an argument and alwasy return a number
